@@ -12,10 +12,14 @@ export default function App() {
   let itemId = Math.random();
   const addGoalHandler = (enteredGoal) =>{
     itemId += Math.random()
-      console.log(itemId)
     setCourseGoals(currentGoals =>{
       
       return ([...currentGoals, {id:itemId.toString() , value: enteredGoal}])})
+  }
+  const removeGoalHandler = goalId =>{
+    setCourseGoals(currentGoals =>{
+      return currentGoals.filter((goal)=> goal.id !== goalId)
+    })
   }
   return (
     <View style = {styles.container}>
@@ -24,7 +28,7 @@ export default function App() {
 
         keyExtractor ={(item, index)=> item.id}
         data = {courseGoals}
-        renderItem = {(goals)=> <GoalItem goal = {goals.item.value} sty = {styles.listItem} onDelete = {()=>console.log("Stop Touching me!!!")}/> }
+        renderItem = {(goals)=> <GoalItem goal = {goals.item.value} sty = {styles.listItem} id = {goals.item.id} onDelete = {removeGoalHandler}/> }
 
       />
     </View>
