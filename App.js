@@ -24,7 +24,7 @@ export default function App() {
 
         keyExtractor ={(item, index)=> item.id}
         data = {courseGoals}
-        renderItem = {(goals)=> <GoalItem goal = {goals.item.value} sty = {styles.listItem}/> }
+        renderItem = {(goals)=> <GoalItem goal = {goals.item.value} sty = {styles.listItem} onDelete = {()=>console.log("Stop Touching me!!!")}/> }
 
       />
     </View>
